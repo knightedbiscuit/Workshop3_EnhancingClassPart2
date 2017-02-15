@@ -36,9 +36,40 @@ namespace Workshop3_EnhancingClassPart2
         int age;
 
         //prroperty
-        public int GetAge()
+        public string Name
         {
-            return age;
+            get {
+                return name;
+            }
+            set {
+                name = value;
+            }
+        }
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+            set
+            {
+                address = value;
+            }
+        }
+
+        public string NRIC
+        {
+            get
+            {
+                return nric;
+            }
+        }
+
+        public int Age
+        {
+            get {
+                return age;
+            }
         }
 
         //constructor
@@ -48,12 +79,15 @@ namespace Workshop3_EnhancingClassPart2
             this.address = address;
             this.nric = nric;
             dob = dobIn;
-            age = 2017-dob.Year;
+            age = DateTime.Now.Year-dob.Year;
         }
+
+        public Customer() : this("NoName","NoAddress","NoNRIC", new DateTime(1900,1,1))
+        { }
 
         public string Showcustomer()
         {
-            return (String.Format(name+"\t"+address+"\t"+nric+"\t"+"{0}",age));
+            return (String.Format(name+"\t\t"+address+"\t\t"+nric+"\t\t"+"{0}",age));
         }
 
     }
@@ -77,6 +111,10 @@ namespace Workshop3_EnhancingClassPart2
             currentAmt = initialAmt;
         }
 
+        public Account()
+            : this("xxx-xxx-xxx", new Customer(), 0)
+        { }
+
         //methods
         public void Deposit(double amount)
         {
@@ -95,7 +133,7 @@ namespace Workshop3_EnhancingClassPart2
         }
         public string Show()
         {
-            return (String.Format(accountNum + "\t" + data.Showcustomer() + "\t" + "{0}", currentAmt));
+            return (String.Format(accountNum + "\t\t" + data.Showcustomer() + "\t\t" + "{0}", currentAmt));
         }
     }
 }
